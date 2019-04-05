@@ -1,4 +1,4 @@
-package VertxTest.treeModel;
+package VertxTest.tree.verticle;
 
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
@@ -26,7 +26,7 @@ public abstract class ITreeNode implements ITreeElement {
     public Future<List<Integer>> sendTreeNode(Vertx vertx, ITreeElement iTreeElement) {
         Future<List<Integer>> future = Future.future();
         vertx.eventBus().send(iTreeElement.getAddress(), iTreeElement, event -> {
-            List<Integer> r = (List<Integer>) event.result();
+            List<Integer> r = (List<Integer>) event.result().body();
             future.complete(r);
         });
         return future;

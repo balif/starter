@@ -1,4 +1,4 @@
-package VertxTest.treeModel;
+package VertxTest.tree.verticle;
 
 public class TrendLeaf extends ILeafNode {
 

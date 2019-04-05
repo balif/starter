@@ -1,4 +1,4 @@
-package VertxTest.treeModel;
+package VertxTest.tree.verticle;
 
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
@@ -18,8 +18,9 @@ public class ListOperator extends ITreeNode {
     public Future<List<Integer>> getRes(Vertx vertx) {
         Future<List<List<Integer>>> r = getFuture(vertx);
         return r.map(lists -> {
+            System.out.println("ListOperator " + Thread.currentThread().getName());
             List<Integer> l = new LinkedList<>();
-            lists.forEach(integers -> integers.addAll(integers));
+            lists.forEach(integers -> l.addAll(integers));
             return l;
         });
     }
