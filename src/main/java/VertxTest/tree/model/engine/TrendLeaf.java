@@ -1,4 +1,7 @@
-package VertxTest.tree.verticle;
+package VertxTest.tree.model.engine;
+
+import VertxTest.tree.model.ILeafNode;
+import io.vertx.core.Vertx;
 
 public class TrendLeaf extends ILeafNode {
 

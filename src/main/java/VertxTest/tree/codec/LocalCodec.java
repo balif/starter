@@ -1,5 +1,6 @@
 package VertxTest.tree.codec;
 
+import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.MessageCodec;
 
@@ -34,5 +35,11 @@ public class LocalCodec implements MessageCodec {
     @Override
     public byte systemCodecID() {
         return -1;
+    }
+
+    public static void registerLocalCodec(Vertx vertx, Class... clazz) {
+        for (Class aClass : clazz) {
+            vertx.eventBus().registerDefaultCodec(aClass, new LocalCodec(aClass));
+        }
     }
 }
